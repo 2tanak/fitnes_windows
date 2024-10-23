@@ -13,7 +13,7 @@
 	@section('js_block')
     @show
 	 {{-- Vite JS --}}
-  
+    {{ module_vite('build-admin', 'resources/assets/js/app.js') }}
 	
 
 

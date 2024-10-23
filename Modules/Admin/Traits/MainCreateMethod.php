@@ -26,7 +26,7 @@ trait MainCreateMethod
 		
 		Alert::success('success', 'Успешно создано');
 
-		return redirect()->route($this->route_path.'.update')->with('success', trans('main.created_model'));
+		return redirect()->route($this->route_path.'.index')->with('success', trans('main.created_model'));
 	}
 	
 	

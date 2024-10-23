@@ -26,6 +26,44 @@
 	
 	
 	
+	  <div class="sidebar-category sidebar-category-visible">
+            <div class="category-content no-padding">
+                <ul class="navigation navigation-main navigation-accordion">
+	
+	 
+	
+	
+	  <li style="">
+       <a   style="" href="#">
+	   <i class="icon-city"></i>
+	   <span>графика
+	   </span></a>
+	     <ul class="hidden-ul">
+		
+	      <li>
+            <a href="{{route('charline')}}">
+	          <span>линейная </span>
+	        </a>
+	      </li>
+		 
+		   <li>
+            <a href="{{route('charkrug')}}">
+	          <span>круговая </span>
+	        </a>
+	      </li>
+		 
+		
+          </ul>
+       </li>
+	 
+	
+	
+	
+	  
+	</ul>
+	</div>
+	
+	</div>
 	
 	
 	

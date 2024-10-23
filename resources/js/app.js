@@ -14,12 +14,27 @@ import { createApp } from 'vue';
  */
 
 const app = createApp({});
-
+import Test1Component from './components/Test1Component.vue';
+app.component('test1-component', Test1Component);
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
+import KrugComponent from './components/KrugComponent.vue';
+app.component('krug-test', KrugComponent);
 
+
+import Test2Component from './components/Test2Component.vue';
+app.component('test2-component', Test2Component);
+
+import AjaxComponent from './components/AjaxComponent.vue';
+app.component('ajax', AjaxComponent);
+
+import CharlineComponent from './components/CharlineComponent.vue';
+app.component('charsline', CharlineComponent);
+
+import KrugcharComponent from './components/KrugcharComponent.vue';
+app.component('krugChar', KrugcharComponent);
 
 
 /**

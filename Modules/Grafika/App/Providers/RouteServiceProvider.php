@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admin\App\Providers;
+namespace Modules\Grafika\App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -10,7 +10,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The module namespace to assume when generating URLs to actions.
      */
-    protected string $moduleNamespace = 'Modules\Admin\App\Http\Controllers';
+    protected string $moduleNamespace = 'Modules\Grafika\App\Http\Controllers';
 
     /**
      * Called before routes are registered.
@@ -20,11 +20,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         parent::boot();
-		Route::model('blog', \Modules\Entity\Model\Blog\Model::class);
-		Route::model('role', \Spatie\Permission\Models\Role::class);
-		
-		Route::model('user', \Modules\Entity\Model\Users\Model::class);
-
     }
 
     /**
@@ -46,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Admin', '/routes/web.php'));
+            ->group(module_path('Grafika', '/routes/web.php'));
     }
 
     /**
@@ -59,6 +54,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Admin', '/routes/api.php'));
+            ->group(module_path('Grafika', '/routes/api.php'));
     }
 }

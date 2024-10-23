@@ -7,21 +7,15 @@ use Illuminate\Http\Request;
 use Modules\Entity\ModelParent;
 use RealRashid\SweetAlert\Facades\Alert;
 use Modules\Admin\App\Http\Requests\RoleRequest;
+use Cache;
+use Modules\Admin\App\Http\Requests\BaseRequest;
 
 trait MainUpdateMethod  {
 	
 	public function edit(Request $request, ModelParent $item)
 	{
 		
-		//dd($item->getPermissionAr());
 		
-		$user = auth()->user();
-		if($user->hasDirectPermission('read blog')){
-			//dd(100);
-		}else{
-			//dd(200);
-		}
-		//dd($item);
 		$general = false;
 		
 		if ($request->general) {
@@ -50,13 +44,13 @@ trait MainUpdateMethod  {
 			'model' => $item
 		]);
 	}
-	public function update(RoleRequest $request, ModelParent $item)
+	public function update(BaseRequest $request, ModelParent $item)
 	{
 		
 		if (CurrentLang::get() && CurrentLang::get() != 'ru') {
 			
 			
-		  $model = $item->relTrans()->updateOrCreate(['lang'=>$request->lang],$request->all());
+		  $model = $item->relTrans()->updateOrCreate(['lang'=>$request->lang,'transable_id'=>$item->id],['lang'=>$request->lang,'name'=>$request->name,'description'=>$request->description]);
 		  Cache::forget($request->lang.$item->getNameSpace());
 		  Cache::rememberForever($request->lang.$item->getNameSpace(), function () use($model){
 			return $model;
@@ -79,13 +73,10 @@ trait MainUpdateMethod  {
 
 		Alert::success('Successfully updated', 'Successfully updated');
        
-		if (!empty($request->lang)) {
-            return redirect()->route($this->route_path . '.edit', $item)->with('success', trans('main.updated_model'));
-			//return redirect()->route($this->route_path . '.edit', $item->id . '?lang=' . $request->lang)->with('success', trans('main.updated_model'));
-		} else {
-
-			return redirect()->route($this->route_path . '.edit', $item)->with('success', trans('main.updated_model'));
-		}
+		
+            
+			return redirect(route($this->route_path . '.edit', $item). '?lang=' . $request->lang)->with('success', trans('main.updated_model'));
+	
 		
 	}
   

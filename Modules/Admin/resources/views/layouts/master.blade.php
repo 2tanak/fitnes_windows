@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/admin-asset/drobsone/css/dropzone.css">
 
     {{-- Vite CSS --}}
-    {{ module_vite('build-admin', 'resources/assets/sass/app.scss') }} 
+   
 </head>
 @section('css_block')
     @show
